@@ -22,7 +22,17 @@
             --gray: #8a8a9c;
             --accent: #9c27b0;
         }
-        
+        body {
+  touch-action: manipulation; /* কিছু gesture block করে */
+  overflow-x: hidden;
+}
+
+html, body {
+  -ms-content-zooming: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
         body {
             background-color: var(--dark);
             color: var(--light);
@@ -983,3 +993,4 @@
     </script>
 </body>
 </html>
+
