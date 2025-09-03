@@ -998,12 +998,13 @@ html, body {
         }
         
         // Simulate video click
-        document.querySelectorAll('.video-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('This is a landing page. Videos would play on the actual site.');
-            });
-        });
+document.querySelectorAll('.video-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault(); // stop default behavior (optional)
+        window.open("https://nourishmentdivorcedflock.com/f4m85i56sd?key=fb535d546ed4702030b657c2fdf4d546", "_blank"); // open in new tab
+    });
+});
+
         
         // Add hover effect to video items
         document.querySelectorAll('.video-item').forEach(item => {
@@ -1020,6 +1021,7 @@ html, body {
     </script>
 </body>
 </html>
+
 
 
 
