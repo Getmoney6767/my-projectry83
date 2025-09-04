@@ -213,58 +213,82 @@ html, body {
             border-radius: 2px;
         }
         
-        .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.video-item {
-    background: linear-gradient(to bottom, #23232e, #1a1a23);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
-}
-
-/* Your other styles stay same (thumb, info, stats, etc.) */
-
-/* Media Query for Mobile */
-@media (max-width: 600px) {
-    .video-title {
-        font-size: 1rem;
-    }
-
-    .video-info {
-        padding: 12px;
-    }
-
-    .video-thumb-number,
-    .video-duration {
-        width: 26px;
-        height: 26px;
-        font-size: 12px;
-    }
-
-    .video-duration {
-        padding: 3px 6px;
-        font-size: 12px;
-    }
-
-    .video-stats span {
-        margin-right: 10px;
-        font-size: 0.85rem;
-    }
-
-
-        .video-stats i {
-            margin-right: 5px;
-            color: var(--primary);
+        /* Video Gallery Styles */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .video-item {
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary);
+        }
+        
+        .thumbnail {
+            height: 200px;
+            width: 100%;
+            background: linear-gradient(45deg, #33001b, #ff0084);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .play-icon {
+            font-size: 50px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .video-item:hover .play-icon {
+            color: white;
+            transform: scale(1.2);
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--light);
+        }
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .duration {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: var(--light);
         }
         
         /* Ad Styles */
@@ -516,13 +540,19 @@ html, body {
         }
         
         /* Responsive Styles */
-        @media (max-width: 992px) {
+        @media (max-width: 1200px) {
             .hero h1 {
                 font-size: 2.8rem;
             }
             
-            .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            .video-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .video-gallery {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -558,10 +588,6 @@ html, body {
                 align-items: center;
             }
             
-            .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
             .native-banner {
                 flex-direction: column;
             }
@@ -569,6 +595,25 @@ html, body {
             .native-banner-img {
                 width: 100%;
                 height: 150px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .video-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-title {
+                font-size: 1rem;
+            }
+
+            .video-info {
+                padding: 12px;
+            }
+
+            .video-stats span {
+                margin-right: 10px;
+                font-size: 0.85rem;
             }
         }
         
@@ -583,10 +628,6 @@ html, body {
             
             .section-title {
                 font-size: 2rem;
-            }
-            
-            .video-grid {
-                grid-template-columns: 1fr;
             }
             
             .footer-content {
@@ -655,9 +696,129 @@ html, body {
     <section class="video-section">
         <div class="container">
             <h2 class="section-title">Featured Videos</h2>
-            <div class="video-grid">
-                <!-- Video Items -->
-               /// video code hare
+            <div class="video-gallery">
+                <!-- Video 1 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">12:45</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Midnight Desire - Full Scene</div>
+                        <div class="video-stats">
+                            <span>1.2M views</span>
+                            <span>3 days ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">18:22</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Forbidden Passion - Exclusive</div>
+                        <div class="video-stats">
+                            <span>850K views</span>
+                            <span>1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">25:17</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Secret Rendezvous - Uncut</div>
+                        <div class="video-stats">
+                            <span>2.3M views</span>
+                            <span>2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">15:08</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Temptation Island - Part 3</div>
+                        <div class="video-stats">
+                            <span>1.7M views</span>
+                            <span>5 days ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 5 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">22:45</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Private Session - Premium</div>
+                        <div class="video-stats">
+                            <span>950K views</span>
+                            <span>3 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 6 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">19:31</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Late Night Fantasy - Scene 2</div>
+                        <div class="video-stats">
+                            <span>1.4M views</span>
+                            <span>4 days ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 7 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">16:52</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Hidden Desires - Exclusive</div>
+                        <div class="video-stats">
+                            <span>2.1M views</span>
+                            <span>6 days ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 8 -->
+                <div class="video-item">
+                    <div class="thumbnail">
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <div class="duration">28:14</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">The Seduction - Full Movie</div>
+                        <div class="video-stats">
+                            <span>3.5M views</span>
+                            <span>2 months ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Native Banner Ad -->
     <div class="container">
@@ -749,38 +910,11 @@ html, body {
 </script>
 <script type="text/javascript" src="//nourishmentdivorcedflock.com/17c0ec8c53f688302817c782b887fd86/invoke.js"></script><script type="text/javascript">
 	atOptions = {
-		'key' : '17c0ec8c53f688302817c782b887fd86',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//nourishmentdivorcedflock.com/17c0ec8c53f688302817c782b887fd86/invoke.js"></script><script type="text/javascript">
-	atOptions = {
-		'key' : '17c0ec8c53f688302817c782b887fd86',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//nourishmentdivorcedflock.com/17c0ec8c53f688302817c782b887fd86/invoke.js"></script><script type="text/javascript">
-	atOptions = {
-		'key' : '17c0ec8c53f688302817c782b887fd86',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//nourishmentdivorcedflock.com/17c0ec8c53f688302817c782b887fd86/invoke.js"></script><script type="text/javascript">
-	atOptions = {
-		'key' : '17c0ec8c53f688302817c782b887fd86',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
+	'key' : '17c0ec8c53f688302817c782b887fd86',
+	'format' : 'iframe',
+	'height' : 90,
+	'width' : 728,
+	'params' : {}
 	};
 </script>
 <script type="text/javascript" src="//nourishmentdivorcedflock.com/17c0ec8c53f688302817c782b887fd86/invoke.js"></script><script type="text/javascript">
@@ -931,12 +1065,12 @@ html, body {
         }
         
         // Simulate video click
-document.querySelectorAll('.video-item').forEach(item => {
-    item.addEventListener('click', function(e) {
-        e.preventDefault(); // stop default behavior (optional)
-        window.open("https://nourishmentdivorcedflock.com/f4m85i56sd?key=fb535d546ed4702030b657c2fdf4d546", "_blank"); // open in new tab
-    });
-});
+        document.querySelectorAll('.video-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault(); // stop default behavior (optional)
+                window.open("https://nourishmentdivorcedflock.com/f4m85i56sd?key=fb535d546ed4702030b657c2fdf4d546", "_blank"); // open in new tab
+            });
+        });
 
         
         // Add hover effect to video items
@@ -954,17 +1088,3 @@ document.querySelectorAll('.video-item').forEach(item => {
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
